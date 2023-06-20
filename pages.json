@@ -17,8 +17,28 @@
       "style": {}
     }
   ],
-  "globalStyle":
-  {
+  "subPackages": [
+    {
+      "root": "subpkg",
+      "pages": [
+        {
+          "path": "goods_detail/goods_detail",
+          "style": {
+            "navigationBarTitleText": "黑马优购",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "goods_list/goods_list",
+          "style": {
+            "navigationBarTitleText": "黑马优购",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    }
+  ],
+  "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "黑马优购",
     "navigationBarBackgroundColor": "#c00000",
@@ -28,8 +48,7 @@
       "background": "#efeff4"
     }
   },
-  "tabBar":
-  {
+  "tabBar": {
     "selectedColor": "#c00000",
     "list": [
       {

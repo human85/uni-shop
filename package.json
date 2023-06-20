@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "axios-miniprogram": "^2.5.0"
+  }
+}
