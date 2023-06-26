@@ -3,6 +3,13 @@ import { ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import { getSwiperListAPI, getNavListAPI, getFloorListAPI } from '@/apis/home.js'
 
+// 搜索框点击事件回调
+function goToSearch() {
+  uni.navigateTo({
+    url: '/subpkg/search/search'
+  })
+}
+
 // 获取轮播图数据
 const swiperList = ref([])
 
@@ -49,6 +56,10 @@ onLoad(() => getFloorList())
 </script>
 
 <template>
+  <!-- 吸顶搜索框 -->
+  <view class="search-box">
+    <my-search @my-click="goToSearch" />
+  </view>
   <!-- 轮播图区域 -->
   <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
     <swiper-item v-for="(item, i) in swiperList" :key="i">
@@ -93,6 +104,12 @@ onLoad(() => getFloorList())
 </template>
 
 <style lang="scss">
+.search-box {
+  position: sticky; // 吸顶效果
+  top: 0;
+  z-index: 999; // 提高层级 防止被轮播图覆盖
+}
+
 swiper {
   height: 330rpx;
 

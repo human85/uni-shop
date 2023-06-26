@@ -34,6 +34,13 @@
             "navigationBarTitleText": "黑马优购",
             "enablePullDownRefresh": false
           }
+        },
+        {
+          "path": "search/search",
+          "style": {
+            "navigationBarTitleText": "黑马优购",
+            "enablePullDownRefresh": false
+          }
         }
       ]
     }
@@ -43,8 +50,7 @@
     "navigationBarTitleText": "黑马优购",
     "navigationBarBackgroundColor": "#c00000",
     "backgroundColor": "#fff",
-    "app-plus":
-    {
+    "app-plus": {
       "background": "#efeff4"
     }
   },

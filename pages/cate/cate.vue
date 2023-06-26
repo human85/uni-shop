@@ -8,7 +8,7 @@ const wh = ref(0)
 
 onLoad(() => {
   const systemInfo = uni.getSystemInfoSync()
-  wh.value = systemInfo.windowHeight
+  wh.value = systemInfo.windowHeight - 50
 })
 
 // 一级分类数据
@@ -50,9 +50,17 @@ function goToGoodsList(item3) {
     url: '/subpkg/goods_list/goods_list?cid=' + item3.cat_id
   })
 }
+
+// 搜索框点击事件回调
+function goToSearch() {
+  uni.navigateTo({
+    url: '/subpkg/search/search'
+  })
+}
 </script>
 
 <template>
+  <my-search @my-click="goToSearch" />
   <view class="scroll-view-container">
     <!-- 左侧滚动视图区域 -->
     <scroll-view class="left-scroll-view" scroll-y="true" :style="{ height: wh + 'px' }">
