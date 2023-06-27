@@ -23,24 +23,19 @@
       "pages": [
         {
           "path": "goods_detail/goods_detail",
-          "style": {
-            "navigationBarTitleText": "黑马优购",
-            "enablePullDownRefresh": false
-          }
+          "style": {}
         },
         {
           "path": "goods_list/goods_list",
           "style": {
-            "navigationBarTitleText": "黑马优购",
-            "enablePullDownRefresh": false
+            "onReachBottomDistance": 150,
+            "enablePullDownRefresh": true,
+            "backgroundColor": "#f8f8f8"
           }
         },
         {
           "path": "search/search",
-          "style": {
-            "navigationBarTitleText": "黑马优购",
-            "enablePullDownRefresh": false
-          }
+          "style": {}
         }
       ]
     }

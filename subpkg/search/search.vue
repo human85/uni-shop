@@ -1,8 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
-import { getSearchListAPI } from '@/apis/search.js'
-
+import { getSearchListAPI } from '@/apis/goods.js'
 const keyword = ref('') // 关键词
 let params = { query: '' } // 搜索列表请求参数
 let timer = null // 定时器
@@ -11,7 +10,6 @@ const historyList = ref([]) // 关键词历史记录
 // 实际展示的关键词历史记录
 // 深拷贝后再反转数组 防止修改原数组顺序
 const histories = computed(() => [...historyList.value].reverse())
-
 // 保存搜索关键词到历史记录的函数
 function saveKeyword() {
   // Set 对象允许存储任何类型的唯一值
@@ -22,18 +20,15 @@ function saveKeyword() {
   // 将搜索记录持久化存储到本地(uni-app会自动将数据转换成 JSON 字符串)
   uni.setStorageSync('keyword', historyList.value)
 }
-
 // 页面加载读取本地存储的历史记录
 onLoad(() => {
   historyList.value = uni.getStorageSync('keyword') || []
 })
-
 // 清除搜索历史记录
 function clearHistory() {
   historyList.value = []
   uni.removeStorageSync('keyword')
 }
-
 // 获取搜索列表的函数
 async function getSearchList() {
   // 防止在关键字后输入空格时重复发送网络请求
@@ -47,7 +42,6 @@ async function getSearchList() {
   searchList.value = data.message
   saveKeyword()
 }
-
 // input 输入的回调
 function inputHandler() {
   timer || clearTimeout(timer)
@@ -56,14 +50,12 @@ function inputHandler() {
     getSearchList()
   }, 500)
 }
-
 // 点击跳转详情页
 function goToDetail(id) {
   uni.navigateTo({
     url: '/subpkg/goods_detail/goods_detail?goods_id=' + id
   })
 }
-
 // 跳转商品列表页面(搜索栏回车或点击搜索历史关键词触发)
 function goToGoodsList(item) {
   // input 事件中 item 为对象 点击事件中 item 为字符串

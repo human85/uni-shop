@@ -131,6 +131,7 @@ function goToSearch() {
 
   .right-scroll-view {
     background-color: #fff;
+
     .cate-lv2-title {
       padding: 15px 0;
       font-size: 12px;
