@@ -15,3 +15,13 @@ export function getGoodsListAPI(params) {
     params
   })
 }
+
+// 请求商品详情
+export function getGoodsInfoAPI(goods_id) {
+  return request({
+    url: 'public/v1/goods/detail',
+    params: {
+      goods_id
+    }
+  })
+}
