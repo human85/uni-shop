@@ -1,7 +1,10 @@
 <script setup>
 import { onLoad } from '@dcloudio/uni-app'
 import { getGoodsInfoAPI } from '@/apis/goods.js'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { useCartStore } from '@/stores/cart.js'
+const cart = useCartStore()
+
 // 获取商品详情数据
 const goodsInfo = ref({})
 
@@ -37,10 +40,20 @@ const options = ref([
   {
     icon: 'cart',
     text: '购物车',
-    info: 2
+    info: 0
   }
 ])
-const buttonGroup = ref([
+// 监听 store 中商品总数变化
+watch(
+  () => cart.total,
+  newVal => {
+    const obj = options.value.find(item => item.text === '购物车')
+    obj.info = newVal
+  },
+  { immediate: true }
+)
+
+const buttonGroup = [
   {
     text: '加入购物车',
     backgroundColor: '#ff0000',
@@ -51,7 +64,7 @@ const buttonGroup = ref([
     backgroundColor: '#ffa200',
     color: '#fff'
   }
-])
+]
 
 // 左侧点击事件
 function onClick(e) {
@@ -61,8 +74,21 @@ function onClick(e) {
     })
   }
 }
+
 // 右侧点击事件
-function buttonClick() {}
+function buttonClick(e) {
+  if (e.content.text === '加入购物车') {
+    const goods = {
+      goods_id: goodsInfo.value.goods_id, // 商品的Id
+      goods_name: goodsInfo.value.goods_name, // 商品的名称
+      goods_price: goodsInfo.value.goods_price, // 商品的价格
+      goods_count: 1, // 商品的数量
+      goods_small_logo: goodsInfo.value.goods_small_logo, // 商品的图片
+      goods_state: true // 商品的勾选状态
+    }
+    cart.addToCart(goods)
+  }
+}
 </script>
 
 <template>

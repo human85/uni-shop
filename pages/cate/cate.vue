@@ -1,8 +1,11 @@
 <script setup>
+import { useSetTabBarText } from '@/composables/setTabBarBadge.js'
 import { ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import { getCateListAPI } from '@/apis/cate.js'
 
+// 修改购物车 tabBar 徽标
+useSetTabBarText()
 // 窗口的可用高度 = 屏幕高度 - navigationBar高度 - tabBar 高度
 const wh = ref(0)
 

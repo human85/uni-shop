@@ -48,7 +48,7 @@ function inputHandler() {
   timer = setTimeout(() => {
     // 获取搜索列表
     getSearchList()
-  }, 500)
+  }, 1000)
 }
 // 点击跳转详情页
 function goToDetail(id) {

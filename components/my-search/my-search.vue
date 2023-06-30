@@ -30,7 +30,6 @@ defineEmits(['myClick'])
   align-items: center;
   padding: 0 10px;
   height: 50px;
-  // background-color: #c00000;
 
   .my-search-box {
     display: flex;
@@ -40,7 +39,6 @@ defineEmits(['myClick'])
     width: 100%;
     height: 36px;
     background-color: #fff;
-    // border-radius: 15px;
 
     .placeholder {
       font-size: 15px;

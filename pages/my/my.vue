@@ -1,19 +1,11 @@
 <template>
-  <view>
-    
-  </view>
+  <view></view>
 </template>
 
-<script>
-  export default {
-    data() {
-      return {
-        
-      };
-    }
-  }
+<script setup>
+import { useSetTabBarText } from '@/composables/setTabBarBadge.js'
+// 修改购物车 tabBar 徽标
+useSetTabBarText()
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

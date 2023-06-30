@@ -1,7 +1,11 @@
 <script setup>
+import { useSetTabBarText } from '@/composables/setTabBarBadge.js'
 import { ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import { getSwiperListAPI, getNavListAPI, getFloorListAPI } from '@/apis/home.js'
+
+// 修改购物车 tabBar 徽标
+useSetTabBarText()
 
 // 搜索框点击事件回调
 function goToSearch() {

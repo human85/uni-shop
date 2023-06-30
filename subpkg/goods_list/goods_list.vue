@@ -44,11 +44,18 @@ onPullDownRefresh(() => {
   goodsList.value = []
   getGoodsList(() => uni.stopPullDownRefresh())
 })
+
+// 跳转详情页
+function goToDetail(id) {
+  uni.navigateTo({
+    url: '/subpkg/goods_detail/goods_detail?goods_id=' + id
+  })
+}
 </script>
 
 <template>
   <view class="goods-list">
-    <my-goods v-for="goods in goodsList" :key="goods.goods_id" :goods="goods"></my-goods>
+    <my-goods v-for="goods in goodsList" :key="goods.goods_id" :goods="goods" @click="goToDetail"></my-goods>
   </view>
 </template>
 
