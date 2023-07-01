@@ -2,8 +2,8 @@
 import { useUserStore } from '@/stores/user.js'
 import { storeToRefs } from 'pinia'
 
-const { userInfo, address } = storeToRefs(useUserStore())
-const { updateUserInfo } = useUserStore()
+const { adressInfo, address } = storeToRefs(useUserStore())
+const { updateAddressInfo } = useUserStore()
 
 // 选择收货地址
 async function chooseAddress() {
@@ -11,7 +11,7 @@ async function chooseAddress() {
     const response = await uni.chooseAddress()
     // 用户选择地址并确认
     if (response.errMsg === 'chooseAddress:ok') {
-      updateUserInfo(response)
+      updateAddressInfo(response)
     }
   } catch (e) {
     // 未授权
@@ -57,16 +57,16 @@ async function reAuth() {
 <template>
   <view class="address-container">
     <!-- 选择收货地址的盒子 -->
-    <view class="address-choose-box" v-if="!userInfo.userName">
+    <view class="address-choose-box" v-if="!adressInfo.userName">
       <button type="primary" size="mini" class="addressChooseBtn" @click="chooseAddress">选择收货地址</button>
     </view>
 
     <!-- 渲染收货信息的盒子 -->
     <view class="addreess-info-box" @click="chooseAddress" v-else>
       <view class="row1">
-        <view class="username">收货人：{{ userInfo.userName }}</view>
+        <view class="username">收货人：{{ adressInfo.userName }}</view>
         <view class="phone">
-          电话：{{ userInfo.telNumber }}
+          电话：{{ adressInfo.telNumber }}
           <uni-icons class="arrowright" type="arrowright" size="16"></uni-icons>
         </view>
       </view>

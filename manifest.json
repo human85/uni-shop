@@ -42,7 +42,15 @@
       },
       "ios": {},
       /* ios打包配置 */
-      "sdkConfigs": {}
+      "sdkConfigs": {
+        "payment": {
+          "weixin": {
+            "__platform__": ["ios", "android"],
+            "appid": "",
+            "UniversalLinks": ""
+          }
+        }
+      }
     }
   },
   /* SDK配置 */
@@ -55,7 +63,8 @@
       "urlCheck": false
     },
     "usingComponents": true,
-    "requiredPrivateInfos": ["chooseAddress"]
+    "requiredPrivateInfos": ["chooseAddress"],
+    "permission": {}
   },
   "vueVersion": "3"
 }
